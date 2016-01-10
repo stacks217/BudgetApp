@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Easy Budget</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_categories">Categories</string>
+    <string name="support_email">stacks@uci.edu</string>
+    <string name="nav_balance">Balance</string>
+    <string name="nav_categories">Categories</string>
+    <string name="nav_deposit">Deposit</string>
+    <string name="nav_withdrawal">Withdrawal</string>
+    <string name="budget_amount_placeholder">$</string>
+    <string name="btn_text_ftue_basic">Monthly</string>
+    <string name="btn_text_ftue_advanced">Categories</string>
+    <string name="nav_edit_budget">Change Budget</string>
+    <string name="budget_amount_hint">Monthy Budget Amount</string>
+    <string name="btn_finished_text">Finished</string>
+</resources>

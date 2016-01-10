@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_balance"
+            android:icon="@drawable/ic_account_balance_black_18dp"
+            android:title="@string/nav_balance" />
+        <item
+            android:id="@+id/nav_categories"
+            android:icon="@drawable/ic_format_list_bulleted_black_18dp"
+            android:title="@string/nav_categories" />
+        <item
+            android:id="@+id/nav_withdrawal"
+            android:icon="@drawable/ic_create_black_18dp"
+            android:title="@string/nav_withdrawal" />
+        <item
+            android:id="@+id/nav_deposit"
+            android:icon="@drawable/ic_create_black_18dp"
+            android:title="@string/nav_deposit" />
+        <item
+            android:id="@+id/nav_edit_budget"
+            android:icon="@drawable/ic_create_black_18dp"
+            android:title="@string/nav_edit_budget" />
+        <item android:id="@+id/nav_debug"
+            android:title="DEBUG" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
+                android:title="Share" />
+            <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+
+</menu>
