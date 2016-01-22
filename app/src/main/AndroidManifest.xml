@@ -3,6 +3,7 @@
     package="edu.uci.stacks.easybudget" >
 
     <application
+        android:name=".BudgetApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,9 +24,19 @@
             android:name=".activity.FirstTimeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.EditBudgetActivity"
+            android:name=".activity.EditBasicBudgetActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.EditAdvancedBudgetActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.EditCategoryActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.EditAdvancedBudgetActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.DeveloperDebugActivity"

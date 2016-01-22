@@ -1,6 +1,5 @@
 package edu.uci.stacks.easybudget.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,7 +7,7 @@ import android.view.View;
 
 import edu.uci.stacks.easybudget.R;
 
-public class DeveloperDebugActivity extends Activity {
+public class DeveloperDebugActivity extends BudgetActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

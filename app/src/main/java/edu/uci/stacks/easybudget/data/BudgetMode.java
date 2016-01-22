@@ -1,19 +1,15 @@
 package edu.uci.stacks.easybudget.data;
 
-import edu.uci.stacks.easybudget.R;
-
 public enum BudgetMode {
-    BASIC("BASIC", R.layout.activity_edit_budget_basic), ADVANCED("ADVANCED", R.layout.activity_edit_budget_advanced);
+    BASIC("BASIC"), ADVANCED("ADVANCED");
 
     private final String text;
-    private final int editBudgetLayoutId;
 
     /**
      * @param text
      */
-    private BudgetMode(final String text, final int editBudgetLayoutId) {
+    private BudgetMode(final String text) {
         this.text = text;
-        this.editBudgetLayoutId = editBudgetLayoutId;
     }
 
     /* (non-Javadoc)
@@ -32,7 +28,4 @@ public enum BudgetMode {
         }
     }
 
-    public int getEditBudgetLayoutId() {
-        return editBudgetLayoutId;
-    }
 }

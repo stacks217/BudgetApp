@@ -12,8 +12,53 @@
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-<TextView
-    android:text="Advanced Budget Mode"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/edit_advanced_budget_title"
+        style="@style/heading_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_finished"
+            android:text="@string/btn_finished_text"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"/>
+            android:onClick="finished"/>
+        <TextView
+            android:id="@+id/edit_budget_help_text"
+            android:layout_above="@id/btn_finished"
+            android:text="@string/edit_budget_help_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"/>
+        <TextView
+            android:id="@+id/total_monthly_budget_text"
+            android:layout_above="@id/edit_budget_help_text"
+            android:textSize="@dimen/total_label_size"
+            android:layout_marginRight="@dimen/label_spacing"
+            android:text="@string/total_monthly_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/total_monthly_budget_amount"
+            android:layout_above="@id/edit_budget_help_text"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/total_monthly_budget_text"
+            android:textSize="@dimen/total_label_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_list"
+            android:layout_above="@id/total_monthly_budget_text"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 </LinearLayout>

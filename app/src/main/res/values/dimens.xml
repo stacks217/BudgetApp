@@ -9,4 +9,6 @@
 
     <dimen name="heading_one_text_size">50dp</dimen>
     <dimen name="heading_one_margin">15dp</dimen>
+    <dimen name="total_label_size">25dp</dimen>
+    <dimen name="label_spacing">8dp</dimen>
 </resources>

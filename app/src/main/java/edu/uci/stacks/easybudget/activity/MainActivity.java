@@ -6,23 +6,33 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
+import edu.uci.stacks.easybudget.BudgetApplication;
 import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.data.BudgetConfig;
+import edu.uci.stacks.easybudget.data.BudgetMode;
+import edu.uci.stacks.easybudget.data.category.CategoryData;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BudgetActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    BudgetConfig budgetConfig;
+
+    @Inject
+    CategoryData data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BudgetConfig budgetConfig = new BudgetConfig(this);
+        BudgetApplication.getComponent().inject(this);
         if (budgetConfig.isFtue()) {
             startActivity(new Intent(this, FirstTimeActivity.class));
             finish();
@@ -51,7 +61,11 @@ public class MainActivity extends AppCompatActivity
 
             float amount = budgetConfig.getBudgetAmount();
             TextView budgetAmountTextView = (TextView) findViewById(R.id.amount_text);
-            budgetAmountTextView.setText(String.format("$%.2f", amount));
+            if (budgetConfig.getBudgetMode() == BudgetMode.BASIC) {
+                budgetAmountTextView.setText(String.format("$%.2f", amount));
+            } else {
+                budgetAmountTextView.setText(data.getTotalAmountString());
+            }
         }
     }
 
@@ -105,7 +119,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_edit_budget) {
-            startActivity(new Intent(this, EditBudgetActivity.class));
+            Intent i = new Intent();
+            if (budgetConfig.getBudgetMode() == BudgetMode.ADVANCED) {
+                // Advanced mode selected
+                i.setClass(this, EditAdvancedBudgetActivity.class);
+            } else {
+                // Basic mode selected
+                i.setClass(this, EditBasicBudgetActivity.class);
+            }
+            startActivity(i);
         } else if (id == R.id.nav_debug) {
             startActivity(new Intent(this, DeveloperDebugActivity.class));
         }

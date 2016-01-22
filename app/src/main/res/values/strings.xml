@@ -18,4 +18,9 @@
     <string name="nav_edit_budget">Change Budget</string>
     <string name="budget_amount_hint">Monthy Budget Amount</string>
     <string name="btn_finished_text">Finished</string>
+    <string name="edit_advanced_budget_title">Edit Monthly Budget</string>
+    <string name="edit_budget_help_text">Please note that you can always change your budget later by clicking Edit Budget in the menu</string>
+    <string name="total_monthly_budget">Total Monthly Budget</string>
+    <string name="category_name_hint">Category Name</string>
+    <string name="category_amount_hint">Amount</string>
 </resources>
