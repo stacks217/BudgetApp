@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,7 @@ import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.data.BudgetConfig;
 import edu.uci.stacks.easybudget.data.BudgetMode;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
+import edu.uci.stacks.easybudget.data.transaction.MoneyTransactionData;
 
 public class MainActivity extends BudgetActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +29,11 @@ public class MainActivity extends BudgetActivity
 
     @Inject
     CategoryData data;
+
+    @Inject
+    MoneyTransactionData moneyTransactionData;
+    private ViewPager mPager;
+    private MonthViewPagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +46,6 @@ public class MainActivity extends BudgetActivity
         } else {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-
-//            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//            fab.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                        .setAction("Action", null).show();
-//                    startActivity(new Intent(MainActivity.this, CategoryDetailActivity.class));
-//                }
-//            });
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -67,6 +64,11 @@ public class MainActivity extends BudgetActivity
                 budgetAmountTextView.setText(data.getTotalAmountString());
             }
         }
+
+        // Instantiate a ViewPager and a PagerAdapter.
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPagerAdapter = new MonthViewPagerAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mPagerAdapter);
     }
 
     @Override
@@ -107,13 +109,9 @@ public class MainActivity extends BudgetActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_balance) {
-            // Handle the camera action
-        } else if (id == R.id.nav_categories) {
 
-        } else if (id == R.id.nav_withdrawal) {
-
-        } else if (id == R.id.nav_deposit) {
-
+        } else if (id == R.id.nav_enter_purchase) {
+            startActivity(new Intent(this, EnterPurchaseActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -135,6 +133,10 @@ public class MainActivity extends BudgetActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void onResume() {
+        super.onResume();
     }
 
 }

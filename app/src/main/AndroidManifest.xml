@@ -39,6 +39,11 @@
             android:parentActivityName=".activity.EditAdvancedBudgetActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".activity.EnterPurchaseActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".activity.DeveloperDebugActivity"
             android:screenOrientation="portrait" />
 

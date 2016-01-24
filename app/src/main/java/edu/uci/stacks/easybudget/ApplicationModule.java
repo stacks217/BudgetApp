@@ -9,6 +9,7 @@ import dagger.Provides;
 import edu.uci.stacks.easybudget.data.BudgetConfig;
 import edu.uci.stacks.easybudget.data.BudgetDataDbHelper;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
+import edu.uci.stacks.easybudget.data.transaction.MoneyTransactionData;
 
 @Module
 public class ApplicationModule {
@@ -37,5 +38,10 @@ public class ApplicationModule {
     @Provides @Singleton
     CategoryData provideCategoryData(BudgetDataDbHelper budgetDataDbHelper) {
         return new CategoryData(budgetDataDbHelper);
+    }
+
+    @Provides @Singleton
+    MoneyTransactionData provideMoneyTransactionData(BudgetDataDbHelper budgetDataDbHelper) {
+        return new MoneyTransactionData(budgetDataDbHelper);
     }
 }

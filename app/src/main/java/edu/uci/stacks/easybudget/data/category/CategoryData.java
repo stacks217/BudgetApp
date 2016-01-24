@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import edu.uci.stacks.easybudget.data.BudgetDataContract;
@@ -34,6 +37,21 @@ public class CategoryData {
         Cursor c = db.query(BudgetDataContract.Category.TABLE_NAME,
                 BudgetDataContract.Category.ALL_COLUMNS,
                 null, null, null, null, null);
+        return c;
+    }
+
+    public Cursor getCategoriesCursorWithSumByMonth(Date date) {
+        String monthStr = new SimpleDateFormat("MM").format(date);
+        String yearStr = new SimpleDateFormat("yyyy").format(date);
+        Cursor c = db.rawQuery("SELECT _id, name, amount, " +
+                "(SELECT SUM(amount) " +
+                "FROM money_transaction " +
+                "WHERE money_transaction.categoryId = category._id AND " +
+                "strftime('%m', date) = '" + monthStr + "' AND " +
+                "strftime('%Y', date) = '" + yearStr + "' " +
+                ") AS sum " +
+                "FROM category", null);
+        // strftime('%m', transactionDate) = '05'
         return c;
     }
 

@@ -9,9 +9,7 @@
     <string name="title_activity_categories">Categories</string>
     <string name="support_email">stacks@uci.edu</string>
     <string name="nav_balance">Balance</string>
-    <string name="nav_categories">Categories</string>
-    <string name="nav_deposit">Deposit</string>
-    <string name="nav_withdrawal">Withdrawal</string>
+    <string name="nav_enter_purchase">Enter Purchase</string>
     <string name="budget_amount_placeholder">$</string>
     <string name="btn_text_ftue_basic">Monthly</string>
     <string name="btn_text_ftue_advanced">Categories</string>
@@ -23,4 +21,27 @@
     <string name="total_monthly_budget">Total Monthly Budget</string>
     <string name="category_name_hint">Category Name</string>
     <string name="category_amount_hint">Amount</string>
+    <string name="category_spinner_label">Category</string>
+    <string name="enter_purchase_title">Enter Purchase</string>
+
+    <!-- These are for the month view table -->
+    <string name="category_table_header">Category</string>
+    <string name="sum_table_header">Spent</string>
+    <string name="total_table_header">Total</string>
+
+
+    <string-array name="months_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 </resources>

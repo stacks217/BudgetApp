@@ -60,7 +60,9 @@ public class EditAdvancedBudgetActivity extends BudgetActivity {
     }
 
     public void finished(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        Intent i = new Intent(this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
         finish();
     }
 }

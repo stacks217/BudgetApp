@@ -4,32 +4,32 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+
+    <TextView
+        android:id="@+id/category_name"
+        android:gravity="center_vertical"
+        android:text="Category"
+        style="@style/heading_two"
+        android:paddingRight="@dimen/label_spacing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <ImageView
         android:id="@+id/chevron_right"
         android:gravity="center_vertical"
         android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/category_name"
+        android:layout_alignBottom="@id/category_name"
         android:src="@drawable/ic_chevron_right_black_48dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/category_name"
-        android:layout_alignBottom="@id/chevron_right"
-        android:layout_alignTop="@id/chevron_right"
-        android:gravity="center_vertical"
-        android:text="Category"
-        android:textSize="@dimen/total_label_size"
-        android:paddingRight="@dimen/label_spacing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
         android:id="@+id/category_amount"
         android:text="$0.00"
         android:layout_toRightOf="@id/category_name"
-        android:gravity="center_vertical"
-        android:layout_alignBottom="@id/chevron_right"
-        android:layout_alignTop="@id/chevron_right"
-        android:textSize="@dimen/total_label_size"
+        android:gravity="center_vertical|right"
+        android:layout_alignTop="@id/category_name"
+        android:layout_alignBottom="@id/category_name"
+        style="@style/heading_two"
         android:layout_toLeftOf="@id/chevron_right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

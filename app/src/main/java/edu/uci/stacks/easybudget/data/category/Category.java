@@ -1,5 +1,7 @@
 package edu.uci.stacks.easybudget.data.category;
 
+import edu.uci.stacks.easybudget.util.DisplayUtil;
+
 public class Category {
     private final int _id;
     private final String name;
@@ -28,6 +30,6 @@ public class Category {
     }
 
     public String getInputDisplayAmount() {
-        return String.format("%.2f", amount/100.0);
+        return DisplayUtil.formatToCurrencyFromCents(amount);
     }
 }

@@ -15,5 +15,25 @@
         style="@style/heading_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_below="@id/amount_text"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/label_spacing"
+        android:layout_marginBottom="@dimen/label_spacing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@id/amount_text"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginTop="@dimen/label_spacing"-->
+        <!--android:layout_marginBottom="@dimen/label_spacing">-->
+        <!--<fragment-->
+            <!--android:id="@+id/month_view_fragment"-->
+            <!--android:name="edu.uci.stacks.easybudget.activity.fragment.MonthlyViewFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+    <!--</FrameLayout>-->
 </RelativeLayout>

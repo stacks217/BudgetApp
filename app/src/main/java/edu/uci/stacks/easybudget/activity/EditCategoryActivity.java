@@ -24,22 +24,29 @@ public class EditCategoryActivity extends BudgetActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BudgetApplication.getComponent().inject(this);
-        setContentView(R.layout.activity_edit_category);
-        setupToolbar();
-        editCategoryName = (EditText) findViewById(R.id.input_name);
-        editCategoryAmount = (EditText) findViewById(R.id.input_amount);
+        Category category = null;
         if (getIntent().hasExtra("category_id")) {
             categoryId = getIntent().getIntExtra("category_id", -1);
-            Category category = categoryData.getCategory(categoryId);
+            category = categoryData.getCategory(categoryId);
+        }
+        setContentView(R.layout.activity_edit_category);
+        editCategoryName = (EditText) findViewById(R.id.input_name);
+        editCategoryAmount = (EditText) findViewById(R.id.input_amount);
+        if (category != null) {
             editCategoryName.setText(category.getName());
             editCategoryAmount.setText(category.getInputDisplayAmount());
         }
 
+        setupToolbar();
     }
 
     public void finished(View view) {
         String name = editCategoryName.getText().toString();
-        int amount = (int)(Double.parseDouble(editCategoryAmount.getText().toString())*100);
+        String amountText = editCategoryAmount.getText().toString();
+        if (TextUtils.isEmpty(amountText)) {
+            amountText = "0.0";
+        }
+        int amount = (int)(Double.parseDouble(amountText)*100);
         if (TextUtils.isEmpty(name)) {
             categoryData.removeCategoryById(categoryId);
         } else {

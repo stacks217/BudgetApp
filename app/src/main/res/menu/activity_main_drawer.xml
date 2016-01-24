@@ -7,17 +7,9 @@
             android:icon="@drawable/ic_account_balance_black_18dp"
             android:title="@string/nav_balance" />
         <item
-            android:id="@+id/nav_categories"
-            android:icon="@drawable/ic_format_list_bulleted_black_18dp"
-            android:title="@string/nav_categories" />
-        <item
-            android:id="@+id/nav_withdrawal"
-            android:icon="@drawable/ic_create_black_18dp"
-            android:title="@string/nav_withdrawal" />
-        <item
-            android:id="@+id/nav_deposit"
-            android:icon="@drawable/ic_create_black_18dp"
-            android:title="@string/nav_deposit" />
+            android:id="@+id/nav_enter_purchase"
+            android:icon="@drawable/ic_credit_card_black_18dp"
+            android:title="@string/nav_enter_purchase" />
         <item
             android:id="@+id/nav_edit_budget"
             android:icon="@drawable/ic_create_black_18dp"
