@@ -8,12 +8,15 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_categories">Categories</string>
     <string name="support_email">stacks@uci.edu</string>
+
     <string name="nav_balance">Balance</string>
     <string name="nav_enter_purchase">Enter Purchase</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_edit_budget">Change Budget</string>
+
     <string name="budget_amount_placeholder">$</string>
     <string name="btn_text_ftue_basic">Monthly</string>
     <string name="btn_text_ftue_advanced">Categories</string>
-    <string name="nav_edit_budget">Change Budget</string>
     <string name="budget_amount_hint">Monthy Budget Amount</string>
     <string name="btn_finished_text">Finished</string>
     <string name="edit_advanced_budget_title">Edit Monthly Budget</string>
@@ -23,6 +26,8 @@
     <string name="category_amount_hint">Amount</string>
     <string name="category_spinner_label">Category</string>
     <string name="enter_purchase_title">Enter Purchase</string>
+
+
 
     <!-- These are for the month view table -->
     <string name="category_table_header">Category</string>
@@ -43,5 +48,28 @@
         <item>October</item>
         <item>November</item>
         <item>December</item>
+    </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_title_remind_me_transactions">Remind me to enter purchases</string>
+
+    <string-array name="pref_sync_remind_me_transactions_titles">
+        <item>5 days</item>
+        <item>10 days</item>
+        <item>15 days</item>
+        <item>20 days</item>
+        <item>30 days</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_remind_me_transactions_values">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>-1</item>
     </string-array>
 </resources>

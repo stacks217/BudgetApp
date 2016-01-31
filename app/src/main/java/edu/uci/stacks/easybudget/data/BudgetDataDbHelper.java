@@ -29,6 +29,7 @@ public class BudgetDataDbHelper extends SQLiteOpenHelper {
                     BudgetDataContract.MoneyTransaction.COLUMN_NAME_IN + INTEGER_TYPE + COMMA_SEP +
                     BudgetDataContract.MoneyTransaction.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
                     BudgetDataContract.MoneyTransaction.COLUMN_NAME_DATE + TEXT_TYPE + COMMA_SEP +
+                    BudgetDataContract.MoneyTransaction.COLUMN_NAME_CREATE_DATE + TEXT_TYPE + COMMA_SEP +
                     BudgetDataContract.MoneyTransaction.COLUMN_NAME_AMOUNT + INTEGER_TYPE +
                     " )";
 

@@ -25,29 +25,35 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.EditBasicBudgetActivity"
-            android:screenOrientation="portrait"
             android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.EditAdvancedBudgetActivity"
-            android:screenOrientation="portrait"
             android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.EditCategoryActivity"
-            android:screenOrientation="portrait"
             android:parentActivityName=".activity.EditAdvancedBudgetActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.EnterPurchaseActivity"
-            android:screenOrientation="portrait"
             android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.DeveloperDebugActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_settings" >
+        </activity>
 
+        <service android:name=".service.NotificationReminderService" />
     </application>
 
 </manifest>
-

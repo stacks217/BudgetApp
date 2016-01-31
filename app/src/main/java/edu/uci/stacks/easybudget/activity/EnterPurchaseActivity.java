@@ -115,9 +115,9 @@ public class EnterPurchaseActivity extends BudgetActivity
         calendar.set(year, month, day);
         Date date = calendar.getTime();
         if (moneyTransactionId != -1) {
-            moneyTransactionData.updateMoneyTransaction(new MoneyOutTransaction(moneyTransactionId, name, categoryId, date, amount));
+            moneyTransactionData.updateMoneyTransaction(new MoneyOutTransaction(moneyTransactionId, name, categoryId, date, amount, new Date()));
         } else {
-            moneyTransactionData.addMoneyTransaction(new MoneyOutTransaction(moneyTransactionId, name, categoryId, date, amount));
+            moneyTransactionData.addMoneyTransaction(new MoneyOutTransaction(name, categoryId, date, amount));
         }
         finish();
     }

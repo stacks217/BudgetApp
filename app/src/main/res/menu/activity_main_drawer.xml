@@ -8,12 +8,16 @@
             android:title="@string/nav_balance" />
         <item
             android:id="@+id/nav_enter_purchase"
-            android:icon="@drawable/ic_credit_card_black_18dp"
+            android:icon="@drawable/ic_receipt_black_18dp"
             android:title="@string/nav_enter_purchase" />
         <item
             android:id="@+id/nav_edit_budget"
             android:icon="@drawable/ic_create_black_18dp"
             android:title="@string/nav_edit_budget" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_18dp"
+            android:title="@string/nav_settings" />
         <item android:id="@+id/nav_debug"
             android:title="DEBUG" />
     </group>

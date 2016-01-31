@@ -12,17 +12,19 @@ abstract public class MoneyTransaction {
     private final int categoryId;
     private final int amount;
     private final Date date;
+    private final Date createDate;
 
     public MoneyTransaction(String name, int categoryId, Date date, int amount) {
-        this(-1, name, categoryId, date, amount);
+        this(-1, name, categoryId, date, amount, new Date());
     }
 
-    public MoneyTransaction(int _id, String name, int categoryId, Date date, int amount) {
+    public MoneyTransaction(int _id, String name, int categoryId, Date date, int amount, Date createDate) {
         this._id = _id;
         this.name = name;
         this.categoryId = categoryId;
         this.amount = amount;
         this.date = date;
+        this.createDate = createDate;
     }
 
     public int getId() {
@@ -45,6 +47,10 @@ abstract public class MoneyTransaction {
         return date;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
     public String getInputDisplayAmount() {
         return DisplayUtil.formatToCurrencyFromCents(amount);
     }
@@ -53,5 +59,9 @@ abstract public class MoneyTransaction {
 
     public String getDateString() {
         return new SimpleDateFormat(BudgetDataContract.MoneyTransaction.DATE_STRING).format(date).toString();
+    }
+
+    public String getCreateDateString() {
+        return new SimpleDateFormat(BudgetDataContract.MoneyTransaction.DATE_STRING).format(createDate).toString();
     }
 }

@@ -26,8 +26,8 @@ public class ApplicationModule {
     }
 
     @Provides @Singleton
-    BudgetConfig provideBudgetConfig(Context context) {
-        return new BudgetConfig(context);
+    BudgetConfig provideBudgetConfig(Context context, MoneyTransactionData moneyTransactionData) {
+        return new BudgetConfig(context, moneyTransactionData);
     }
 
     @Provides

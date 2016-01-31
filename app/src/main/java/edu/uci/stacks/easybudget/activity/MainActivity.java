@@ -20,6 +20,7 @@ import edu.uci.stacks.easybudget.data.BudgetConfig;
 import edu.uci.stacks.easybudget.data.BudgetMode;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
 import edu.uci.stacks.easybudget.data.transaction.MoneyTransactionData;
+import edu.uci.stacks.easybudget.service.NotificationReminderService;
 
 public class MainActivity extends BudgetActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +39,10 @@ public class MainActivity extends BudgetActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // start this service if user ever comes to the app so notifications work based on alarms
+        startService(new Intent(this, NotificationReminderService.class));
+
         setContentView(R.layout.activity_main);
         BudgetApplication.getComponent().inject(this);
         if (budgetConfig.isFtue()) {
@@ -112,6 +117,8 @@ public class MainActivity extends BudgetActivity
 
         } else if (id == R.id.nav_enter_purchase) {
             startActivity(new Intent(this, EnterPurchaseActivity.class));
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

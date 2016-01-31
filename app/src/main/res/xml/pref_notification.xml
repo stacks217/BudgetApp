@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="NUM_OF_DAYS_REMINDER_KEY"
+        android:title="@string/pref_title_remind_me_transactions"
+        android:entries="@array/pref_sync_remind_me_transactions_titles"
+        android:entryValues="@array/pref_sync_remind_me_transactions_values"
+        android:defaultValue="5"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+
+</PreferenceScreen>

@@ -30,6 +30,7 @@ public class BudgetDataContract {
         public static final String COLUMN_NAME_IN = "money_in";
         // YYYY-MM-DD
         public static final String COLUMN_NAME_DATE = "date";
+        public static final String COLUMN_NAME_CREATE_DATE = "create_date";
         public static final String DATE_STRING = "yyyy-MM-dd HH:mm:ss.SSS";
         public static final String COLUMN_NAME_AMOUNT = "amount";
         public static final String[] ALL_COLUMNS = new String[]{
@@ -38,6 +39,7 @@ public class BudgetDataContract {
                 COLUMN_NAME_IN,
                 COLUMN_NAME_NAME,
                 COLUMN_NAME_DATE,
+                COLUMN_NAME_CREATE_DATE,
                 COLUMN_NAME_AMOUNT};
     }
 }
