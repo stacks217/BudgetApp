@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -32,12 +34,21 @@ public class CategoryData {
         return "$0.00";
     }
 
-    public Cursor getCategoriesCursor() {
+    public Category[] getCategories() {
+        List<Category> categories = new ArrayList<Category>();
+        categories.add(new Category("Other",0));
         // query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)
         Cursor c = db.query(BudgetDataContract.Category.TABLE_NAME,
                 BudgetDataContract.Category.ALL_COLUMNS,
                 null, null, null, null, null);
-        return c;
+        while(c.moveToNext() && !c.isAfterLast()) {
+            int _id = c.getInt(c.getColumnIndex(BudgetDataContract.Category._ID));
+            String name = c.getString(c.getColumnIndex(BudgetDataContract.Category.COLUMN_NAME_NAME));
+            int amount = c.getInt(c.getColumnIndex(BudgetDataContract.Category.COLUMN_NAME_AMOUNT));
+            categories.add(new Category(_id, name, amount));
+        }
+        c.close();
+        return categories.toArray(new Category[categories.size()]);
     }
 
     public Cursor getCategoriesCursorWithSumByMonth(Date date) {

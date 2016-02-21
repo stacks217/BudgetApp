@@ -34,11 +34,28 @@ public class MoneyTransactionData {
         return c;
     }
 
+
+    public Cursor getMoneyTransactionsOutForDisplayCursor() {
+        Cursor c = db.rawQuery("SELECT money_transaction._id AS _id, " +
+                "money_transaction.name AS name, " +
+                "money_transaction.amount AS amount, " +
+                "money_transaction.receipt_file_path AS receipt_file_path, " +
+                "money_transaction.date AS date, " +
+                "money_transaction.create_date AS create_date, " +
+                "category.name AS categoryName " +
+                "FROM money_transaction " +
+                "LEFT JOIN category ON " +
+                "money_transaction.categoryId = category._id " +
+                "WHERE money_transaction.money_in = 0 " +
+                "ORDER BY money_transaction.date DESC", null);
+        return c;
+    }
+
     public MoneyTransaction getMoneyTransaction(int id) {
         // query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)
         Cursor c = db.query(BudgetDataContract.MoneyTransaction.TABLE_NAME,
                 BudgetDataContract.MoneyTransaction.ALL_COLUMNS,
-                "_id = ?", new String[]{id+""}, null, null, null);
+                "_id = ?", new String[]{id + ""}, null, null, null);
         MoneyTransaction moneyTransaction;
         if (c.getCount() > 0 && c.moveToFirst()) {
             moneyTransaction = getMoneyTransactionFromCursor(c);
@@ -58,6 +75,7 @@ public class MoneyTransactionData {
         int categoryId = c.getInt(c.getColumnIndex(BudgetDataContract.MoneyTransaction.COLUMN_NAME_CATEGORY_ID));
         int in = c.getInt(c.getColumnIndex(BudgetDataContract.MoneyTransaction.COLUMN_NAME_IN));
         int amount = c.getInt(c.getColumnIndex(BudgetDataContract.MoneyTransaction.COLUMN_NAME_AMOUNT));
+        String receiptFilePath = c.getString(c.getColumnIndex(BudgetDataContract.MoneyTransaction.COLUMN_NAME_RECEIPT_FILE_PATH));
         String dateString = c.getString(c.getColumnIndex(BudgetDataContract.MoneyTransaction.COLUMN_NAME_DATE));
         Date date = null;
         try {
@@ -73,9 +91,9 @@ public class MoneyTransactionData {
             e.printStackTrace();
         }
         if (in == 0) {
-            moneyTransaction = new MoneyOutTransaction(_id, name, categoryId, date, amount, createDate);
+            moneyTransaction = new MoneyOutTransaction(_id, name, categoryId, date, amount, receiptFilePath, createDate);
         } else {
-            moneyTransaction = new MoneyInTransaction(_id, name, categoryId, date, amount, createDate);
+            moneyTransaction = new MoneyInTransaction(_id, name, categoryId, date, amount, receiptFilePath, createDate);
         }
         return moneyTransaction;
     }
@@ -88,6 +106,7 @@ public class MoneyTransactionData {
         cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_IN, tx.isIn());
         cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_DATE, tx.getDateString());
         cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_AMOUNT, tx.getAmount());
+        cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_RECEIPT_FILE_PATH, tx.getReceiptFilePath());
         db.update(BudgetDataContract.MoneyTransaction.TABLE_NAME, cv, "_id = ?", new String[]{tx.getId() + ""});
     }
 
@@ -99,6 +118,7 @@ public class MoneyTransactionData {
         cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_IN, tx.isIn());
         cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_DATE, tx.getDateString());
         cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_AMOUNT, tx.getAmount());
+        cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_RECEIPT_FILE_PATH, tx.getReceiptFilePath());
         cv.put(BudgetDataContract.MoneyTransaction.COLUMN_NAME_CREATE_DATE, tx.getCreateDateString());
         db.insert(BudgetDataContract.MoneyTransaction.TABLE_NAME, null, cv);
     }
@@ -122,4 +142,21 @@ public class MoneyTransactionData {
         c.close();
         return transactions;
     }
+
+    public int getSumByMonth(Date date) {
+        String monthStr = new SimpleDateFormat("MM").format(date);
+        String yearStr = new SimpleDateFormat("yyyy").format(date);
+        Cursor c = db.rawQuery("SELECT SUM(amount) AS sum " +
+                "FROM money_transaction " +
+                "WHERE strftime('%m', date) = '" + monthStr + "' AND " +
+                "strftime('%Y', date) = '" + yearStr + "'", null);
+        // strftime('%m', transactionDate) = '05'
+        int sum = 0;
+        if (c.moveToFirst()) {
+            sum = c.getInt(0);
+        }
+        c.close();
+        return sum;
+    }
+
 }

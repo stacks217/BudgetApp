@@ -1,7 +1,6 @@
 package edu.uci.stacks.easybudget.data.category;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +9,15 @@ import android.widget.TextView;
 
 import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.activity.EditCategoryActivity;
-import edu.uci.stacks.easybudget.data.BudgetDataContract;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     private final CategoryData categoryData;
-    private Cursor cursor;
+    private Category[] categories;
 
 
     public void update() {
-        cursor.close();
-        cursor = categoryData.getCategoriesCursor();
+        categories = categoryData.getCategories();
         notifyDataSetChanged();
     }
 
@@ -53,7 +50,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     // Provide a suitable constructor (depends on the kind of dataset)
     public CategoryAdapter(CategoryData categoryData) {
         this.categoryData = categoryData;
-        cursor = categoryData.getCategoriesCursor();
+        categories = categoryData.getCategories();
     }
 
     // Create new views (invoked by the layout manager)
@@ -80,11 +77,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         } else {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            cursor.moveToPosition(position - 1);
-            holder.name.setText(cursor.getString(cursor.getColumnIndex(BudgetDataContract.Category.COLUMN_NAME_NAME)));
-            int cents = cursor.getInt(cursor.getColumnIndex(BudgetDataContract.Category.COLUMN_NAME_AMOUNT));
+            holder.name.setText(categories[position - 1].getName());
+            int cents = categories[position - 1].getAmount();
             holder.amount.setText(String.format("$%.2f", cents / 100.0));
-            holder.id = cursor.getInt(cursor.getColumnIndex(BudgetDataContract.Category._ID));
+            holder.id = categories[position - 1].getId();
         }
 
     }
@@ -92,7 +88,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return cursor.getCount() + 1;
+        return categories.length + 1;
     }
 
 }

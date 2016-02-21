@@ -25,14 +25,16 @@
     <string name="category_name_hint">Category Name</string>
     <string name="category_amount_hint">Amount</string>
     <string name="category_spinner_label">Category</string>
+    <string name="category_default_label">Other</string>
     <string name="enter_purchase_title">Enter Purchase</string>
 
 
+    <string name="toggle_monthly_reminder_label">Remind me every month starting on this date.</string>
 
     <!-- These are for the month view table -->
     <string name="category_table_header">Category</string>
     <string name="sum_table_header">Spent</string>
-    <string name="total_table_header">Total</string>
+    <string name="budget_table_header">Budget</string>
 
 
     <string-array name="months_array">
@@ -55,6 +57,11 @@
 
     <string name="pref_header_notifications">Notifications</string>
     <string name="pref_title_remind_me_transactions">Remind me to enter purchases</string>
+    <string name="nav_audit_title">Audit</string>
+    <string name="nav_view_all_purchases">All Purchases</string>
+    <string name="purchase_name_hint">Purchase Name</string>
+    <string name="add_receipt_button">Attach Receipt</string>
+    <string name="open_receipt_with">View receipt image in</string>
 
     <string-array name="pref_sync_remind_me_transactions_titles">
         <item>5 days</item>

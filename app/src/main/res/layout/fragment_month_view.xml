@@ -9,16 +9,33 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/current_month_total"
+        style="@style/heading_two"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TableLayout
-            android:id="@+id/tableLayout"
+        <LinearLayout
+            android:id="@+id/month_data_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:shrinkColumns="*"
-            android:stretchColumns="*" >
-        </TableLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:shrinkColumns="*"
+                android:stretchColumns="*" >
+            </TableLayout>
+            <fragment android:name="edu.uci.stacks.easybudget.activity.fragment.MonthlyChartFragment"
+                android:id="@+id/monthly_chart_fragment"
+                android:tag="MonthlyChartFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

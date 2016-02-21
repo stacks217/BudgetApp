@@ -25,6 +25,7 @@ public class BudgetDataContract {
 
         public static final String TABLE_NAME = "money_transaction";
         public static final String COLUMN_NAME_NAME = "name";
+        public static final String COLUMN_NAME_RECEIPT_FILE_PATH = "receipt_file_path";
         public static final String COLUMN_NAME_CATEGORY_ID = "categoryId";
         /* If this money is money coming in then it is 1 otherwise 0 */
         public static final String COLUMN_NAME_IN = "money_in";
@@ -40,6 +41,7 @@ public class BudgetDataContract {
                 COLUMN_NAME_NAME,
                 COLUMN_NAME_DATE,
                 COLUMN_NAME_CREATE_DATE,
+                COLUMN_NAME_RECEIPT_FILE_PATH,
                 COLUMN_NAME_AMOUNT};
     }
 }

@@ -1,5 +1,6 @@
 package edu.uci.stacks.easybudget.activity;
 
+import edu.uci.stacks.easybudget.activity.fragment.MonthlyChartFragment;
 import edu.uci.stacks.easybudget.activity.fragment.MonthlyViewFragment;
 
 public interface ActivityComponent {
@@ -11,5 +12,7 @@ public interface ActivityComponent {
     void inject(EnterPurchaseActivity enterPurchaseActivity);
     void inject(MainActivity mainActivity);
     void inject(MonthlyViewFragment monthlyViewFragment);
+    void inject(MonthlyChartFragment monthlyChartFragment);
+    void inject(ViewAllPurchasesActivity viewAllPurchasesActivity);
 
 }

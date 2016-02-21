@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class MoneyOutTransaction extends MoneyTransaction {
 
-    public MoneyOutTransaction(int _id, String name, int categoryId, Date date, int amount, Date createDate) {
-        super(_id, name, categoryId, date, amount, createDate);
+    public MoneyOutTransaction(int _id, String name, int categoryId, Date date, int amount, String receiptFilePath, Date createDate) {
+        super(_id, name, categoryId, date, amount, receiptFilePath, createDate);
     }
 
-    public MoneyOutTransaction(String name, int categoryId, Date date, int amount) {
-        super(name, categoryId, date, amount);
+    public MoneyOutTransaction(String name, int categoryId, Date date, int amount, String receiptFilePath) {
+        super(name, categoryId, date, amount, receiptFilePath);
     }
 
     @Override

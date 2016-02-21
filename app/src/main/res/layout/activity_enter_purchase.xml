@@ -11,54 +11,87 @@
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        style="@style/standard_activity_margin">
-        <TextView
-            android:text="@string/enter_purchase_title"
-            style="@style/heading_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="@string/category_spinner_label"
-            style="@style/heading_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/category_spinner"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
-
-            <EditText
-                android:id="@+id/input_amount"
-                android:inputType="numberDecimal"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            style="@style/standard_activity_margin">
+            <TextView
+                android:text="@string/enter_purchase_title"
+                style="@style/heading_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:hint="@string/category_amount_hint" />
-        </android.support.design.widget.TextInputLayout>
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
-        <Button
+                <AutoCompleteTextView
+                    android:id="@+id/input_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="textCapSentences"
+                    android:hint="@string/purchase_name_hint" />
+            <TextView
+                android:text="@string/category_spinner_label"
+                style="@style/heading_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <EditText
+                    android:id="@+id/input_amount"
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:hint="@string/category_amount_hint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
             android:id="@+id/date_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pick Date"
             android:onClick="showDatePickerDialog" />
 
-        <Button
-            android:id="@+id/btn_finished"
-            android:text="@string/btn_finished_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:onClick="finished"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/add_receipt_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_receipt_button"
+                android:onClick="addReceipt" />
+
+            <ImageView
+                android:id="@+id/receipt_thumbnail"
+                android:onClick="viewImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_finished"
+                android:text="@string/btn_finished_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:onClick="finished"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

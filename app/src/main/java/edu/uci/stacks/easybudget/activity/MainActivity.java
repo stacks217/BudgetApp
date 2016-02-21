@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import edu.uci.stacks.easybudget.BudgetApplication;
 import edu.uci.stacks.easybudget.R;
+import edu.uci.stacks.easybudget.activity.fragment.adapter.MonthViewPagerAdapter;
 import edu.uci.stacks.easybudget.data.BudgetConfig;
 import edu.uci.stacks.easybudget.data.BudgetMode;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
@@ -74,6 +75,7 @@ public class MainActivity extends BudgetActivity
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new MonthViewPagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setCurrentItem(MonthViewPagerAdapter.MAX_ADAPATER_SIZE / 2, false);
     }
 
     @Override
@@ -119,6 +121,8 @@ public class MainActivity extends BudgetActivity
             startActivity(new Intent(this, EnterPurchaseActivity.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
+        } else if (id == R.id.nav_view_all_purchases) {
+            startActivity(new Intent(this, ViewAllPurchasesActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

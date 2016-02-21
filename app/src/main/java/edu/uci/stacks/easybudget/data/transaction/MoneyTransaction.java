@@ -13,17 +13,19 @@ abstract public class MoneyTransaction {
     private final int amount;
     private final Date date;
     private final Date createDate;
+    private final String receiptFilePath;
 
-    public MoneyTransaction(String name, int categoryId, Date date, int amount) {
-        this(-1, name, categoryId, date, amount, new Date());
+    public MoneyTransaction(String name, int categoryId, Date date, int amount, String receiptFilePath) {
+        this(-1, name, categoryId, date, amount, receiptFilePath, new Date());
     }
 
-    public MoneyTransaction(int _id, String name, int categoryId, Date date, int amount, Date createDate) {
+    public MoneyTransaction(int _id, String name, int categoryId, Date date, int amount, String receiptFilePath, Date createDate) {
         this._id = _id;
         this.name = name;
         this.categoryId = categoryId;
         this.amount = amount;
         this.date = date;
+        this.receiptFilePath = receiptFilePath;
         this.createDate = createDate;
     }
 
@@ -45,6 +47,10 @@ abstract public class MoneyTransaction {
 
     public Date getDate() {
         return date;
+    }
+
+    public String getReceiptFilePath() {
+        return receiptFilePath;
     }
 
     public Date getCreateDate() {

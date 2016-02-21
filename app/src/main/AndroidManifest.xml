@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.uci.stacks.easybudget" >
 
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:name=".BudgetApplication"
         android:allowBackup="true"
@@ -40,6 +45,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.EnterPurchaseActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ViewReceiptActivity"
+            android:parentActivityName=".activity.EnterPurchaseActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ViewAllPurchasesActivity"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

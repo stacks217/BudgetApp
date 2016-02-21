@@ -22,6 +22,14 @@
             android:title="DEBUG" />
     </group>
 
+    <item android:title="@string/nav_audit_title">
+        <menu>
+            <item android:id="@+id/nav_view_all_purchases"
+                android:icon="@drawable/ic_list_black_18dp"
+                android:title="@string/nav_view_all_purchases" />
+        </menu>
+    </item>
+
     <item android:title="Communicate">
         <menu>
             <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
