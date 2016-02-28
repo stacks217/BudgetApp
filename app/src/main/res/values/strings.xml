@@ -15,13 +15,14 @@
     <string name="nav_edit_budget">Change Budget</string>
 
     <string name="budget_amount_placeholder">$</string>
-    <string name="btn_text_ftue_basic">Monthly</string>
+    <string name="btn_text_ftue_basic">Basic</string>
     <string name="btn_text_ftue_advanced">Categories</string>
     <string name="budget_amount_hint">Monthy Budget Amount</string>
     <string name="btn_finished_text">Finished</string>
     <string name="edit_advanced_budget_title">Edit Monthly Budget</string>
     <string name="edit_budget_help_text">Please note that you can always change your budget later by clicking Edit Budget in the menu</string>
     <string name="total_monthly_budget">Total Monthly Budget</string>
+    <string name="spent_this_month">Spent</string>
     <string name="category_name_hint">Category Name</string>
     <string name="category_amount_hint">Amount</string>
     <string name="category_spinner_label">Category</string>
@@ -62,6 +63,11 @@
     <string name="purchase_name_hint">Purchase Name</string>
     <string name="add_receipt_button">Attach Receipt</string>
     <string name="open_receipt_with">View receipt image in</string>
+    <string name="ftue_text">If you wish do a basic budget with no spending categories tap basic. If you wish to set spending categories each month tap categories.
+
+    You can change this later by going to edit budget.</string>
+        <string name="change_to_basic">If you wish do a basic budget with no spending categories tap basic.</string>
+        <string name="change_to_advanced">If you wish to set spending categories each month tap categories.</string>
 
     <string-array name="pref_sync_remind_me_transactions_titles">
         <item>5 days</item>

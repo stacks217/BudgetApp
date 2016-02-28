@@ -14,9 +14,8 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/money_transaction_list"
-        android:layout_marginTop="@dimen/label_spacing"
-        android:layout_marginBottom="@dimen/label_spacing"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        style="@style/standard_activity_margin"/>
 </LinearLayout>

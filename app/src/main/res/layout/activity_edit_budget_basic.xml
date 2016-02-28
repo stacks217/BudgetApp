@@ -12,20 +12,38 @@
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:padding="5dp"
+        android:text="@string/change_to_advanced"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="@string/btn_text_ftue_advanced"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="changeToAdvanced"/>
+
     <TextView
         android:text="Basic Budget Mode"
+        style="@style/heading_two"
+        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/budget_amount_edit"
         android:hint="@string/budget_amount_hint"
         android:inputType="number"
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
         android:text="@string/btn_finished_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:onClick="finished"/>
+
 
 </LinearLayout>

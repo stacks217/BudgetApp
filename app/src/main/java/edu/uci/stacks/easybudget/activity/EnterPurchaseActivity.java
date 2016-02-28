@@ -29,6 +29,8 @@ import javax.inject.Inject;
 import edu.uci.stacks.easybudget.BudgetApplication;
 import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.activity.fragment.DatePickerFragment;
+import edu.uci.stacks.easybudget.data.BudgetConfig;
+import edu.uci.stacks.easybudget.data.BudgetMode;
 import edu.uci.stacks.easybudget.data.category.Category;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
 import edu.uci.stacks.easybudget.data.category.CategorySpinnerAdapater;
@@ -48,6 +50,9 @@ public class EnterPurchaseActivity extends BudgetActivity
 
     @Inject
     MoneyTransactionData moneyTransactionData;
+
+    @Inject
+    BudgetConfig budgetConfig;
 
     public int moneyTransactionId = -1;
     private EditText editAmount;
@@ -118,6 +123,11 @@ public class EnterPurchaseActivity extends BudgetActivity
         }
         datePicker = (Button) findViewById(R.id.date_picker);
         setDatePickerButtonText();
+
+        if (budgetConfig.getBudgetMode() == BudgetMode.BASIC) {
+            categorySpinner.setVisibility(View.GONE);
+            findViewById(R.id.category_spinner_title).setVisibility(View.GONE);
+        }
     }
 
     private void setDatePickerButtonText() {

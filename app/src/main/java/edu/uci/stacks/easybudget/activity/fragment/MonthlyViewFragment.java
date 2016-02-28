@@ -4,6 +4,8 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +23,11 @@ import javax.inject.Inject;
 
 import edu.uci.stacks.easybudget.BudgetApplication;
 import edu.uci.stacks.easybudget.R;
+import edu.uci.stacks.easybudget.data.BudgetConfig;
 import edu.uci.stacks.easybudget.data.BudgetDataContract;
+import edu.uci.stacks.easybudget.data.BudgetMode;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
+import edu.uci.stacks.easybudget.data.transaction.BasicMonthlyTransactionAdapter;
 import edu.uci.stacks.easybudget.data.transaction.MoneyTransactionData;
 import edu.uci.stacks.easybudget.util.DisplayUtil;
 
@@ -32,8 +37,15 @@ public class MonthlyViewFragment extends MonthlyFragmentBase {
     CategoryData categoryData;
     @Inject
     MoneyTransactionData transactionData;
+    @Inject
+    BudgetConfig budgetConfig;
+
     private View root;
     private Date date;
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLayoutManager;
+    private BasicMonthlyTransactionAdapter mAdapter;
+    private int monthSpentTotal;
 
     public static Fragment getInstance(int position) {
         MonthlyViewFragment monthlyViewFragment = new MonthlyViewFragment();
@@ -59,15 +71,40 @@ public class MonthlyViewFragment extends MonthlyFragmentBase {
 
     public void onResume() {
         super.onResume();
-        buildTable((ViewGroup) root.findViewById(R.id.tableLayout));
+        monthSpentTotal = transactionData.getSumByMonth(date);
+        ((TextView)root.findViewById(R.id.current_month_total)).setText(DisplayUtil.formatToCurrencyFromCents(monthSpentTotal));
+        if (budgetConfig.getBudgetMode() == BudgetMode.ADVANCED) {
+            root.findViewById(R.id.tableLayout).setVisibility(View.VISIBLE);
+            buildTable((ViewGroup) root.findViewById(R.id.tableLayout));
+            root.findViewById(R.id.monthly_chart_fragment).setVisibility(View.VISIBLE);
+        } else {
+            root.findViewById(R.id.tableLayout).setVisibility(View.GONE);
+            root.findViewById(R.id.monthly_chart_fragment).setVisibility(View.GONE);
+            if (mRecyclerView == null) {
+                mRecyclerView = (RecyclerView) root.findViewById(R.id.basic_money_transaction_list);
+                mRecyclerView.setVisibility(View.VISIBLE);
+
+                // use this setting to improve performance if you know that changes
+                // in content do not change the layout size of the RecyclerView
+                mRecyclerView.setHasFixedSize(true);
+
+                // use a linear layout manager
+                mLayoutManager = new LinearLayoutManager(getActivity());
+                mRecyclerView.setLayoutManager(mLayoutManager);
+
+                // specify an adapter (see also next example)
+                mAdapter = new BasicMonthlyTransactionAdapter(transactionData, date);
+                mRecyclerView.setAdapter(mAdapter);
+            } else {
+                mAdapter.update();
+            }
+        }
     }
 
     private void buildTable(ViewGroup tableView) {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         tableView.removeAllViews();
 
-
-        int monthTotal = transactionData.getSumByMonth(date);
         int setCategoriesSum = 0;
 
         Cursor c = categoryData.getCategoriesCursorWithSumByMonth(date);
@@ -117,7 +154,7 @@ public class MonthlyViewFragment extends MonthlyFragmentBase {
         sumAmt = (TextView) row.findViewById(R.id.cell_sum_amt);
         totalAmt = (TextView) row.findViewById(R.id.cell_total_amt);
 
-        int otherSum = monthTotal - setCategoriesSum;
+        int otherSum = monthSpentTotal - setCategoriesSum;
         catName.setText(R.string.category_default_label);
         sumAmt.setText(DisplayUtil.formatToCurrencyFromCents(otherSum));
         totalAmt.setText(DisplayUtil.formatToCurrencyFromCents(0));
@@ -128,8 +165,6 @@ public class MonthlyViewFragment extends MonthlyFragmentBase {
         tableView.addView(row);
         categoryEntries.add(new Entry(otherSum, rows));
         categorNames.add(getResources().getString(R.string.category_default_label));
-
-        ((TextView)root.findViewById(R.id.current_month_total)).setText(DisplayUtil.formatToCurrencyFromCents(monthTotal));
 
         MonthlyChartFragment frag = (MonthlyChartFragment) getChildFragmentManager().findFragmentByTag(MonthlyChartFragment.TAG);
         if (frag != null) {

@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import edu.uci.stacks.easybudget.BudgetApplication;
 import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.data.BudgetConfig;
+import edu.uci.stacks.easybudget.data.BudgetMode;
 import edu.uci.stacks.easybudget.data.category.CategoryAdapter;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
 
@@ -63,6 +64,12 @@ public class EditAdvancedBudgetActivity extends BudgetActivity {
         Intent i = new Intent(this, MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+        finish();
+    }
+
+    public void changeToBasic(View view) {
+        budgetConfig.setBudgetMode(BudgetMode.BASIC);
+        startActivity(new Intent(this, EditBasicBudgetActivity.class));
         finish();
     }
 }

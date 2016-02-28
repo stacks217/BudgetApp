@@ -159,4 +159,14 @@ public class MoneyTransactionData {
         return sum;
     }
 
+    public Cursor getAllTransactionsForDate(Date date) {
+        String monthStr = new SimpleDateFormat("MM").format(date);
+        String yearStr = new SimpleDateFormat("yyyy").format(date);
+        Cursor c = db.rawQuery("SELECT name, amount, date " +
+                "FROM money_transaction " +
+                "WHERE strftime('%m', date) = '" + monthStr + "' AND " +
+                "strftime('%Y', date) = '" + yearStr + "'", null);
+        c.moveToFirst();
+        return c;
+    }
 }

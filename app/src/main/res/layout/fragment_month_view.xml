@@ -15,25 +15,33 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/basic_money_transaction_list"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/month_data_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:visibility="gone"
                 android:shrinkColumns="*"
                 android:stretchColumns="*" >
             </TableLayout>
             <fragment android:name="edu.uci.stacks.easybudget.activity.fragment.MonthlyChartFragment"
                 android:id="@+id/monthly_chart_fragment"
                 android:tag="MonthlyChartFragment"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

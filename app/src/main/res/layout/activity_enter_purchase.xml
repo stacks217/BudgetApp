@@ -39,6 +39,7 @@
                     android:inputType="textCapSentences"
                     android:hint="@string/purchase_name_hint" />
             <TextView
+                android:id="@+id/category_spinner_title"
                 android:text="@string/category_spinner_label"
                 style="@style/heading_three"
                 android:layout_width="wrap_content"
@@ -90,7 +91,7 @@
                 android:text="@string/btn_finished_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"
                 android:onClick="finished"/>
         </LinearLayout>
     </ScrollView>

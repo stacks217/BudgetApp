@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import edu.uci.stacks.easybudget.BudgetApplication;
 import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.data.BudgetConfig;
+import edu.uci.stacks.easybudget.data.BudgetMode;
 
 public class EditBasicBudgetActivity extends BudgetActivity {
 
@@ -31,6 +32,12 @@ public class EditBasicBudgetActivity extends BudgetActivity {
         EditText amountEditText = (EditText) findViewById(R.id.budget_amount_edit);
         budgetConfig.setBudgetAmount(Float.parseFloat(amountEditText.getText().toString()));
         startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
+    public void changeToAdvanced(View view) {
+        budgetConfig.setBudgetMode(BudgetMode.ADVANCED);
+        startActivity(new Intent(this, EditAdvancedBudgetActivity.class));
         finish();
     }
 }

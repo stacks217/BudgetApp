@@ -41,6 +41,7 @@ public class MonthlyChartFragment extends MonthlyFragmentBase {
         root =  inflater.inflate(R.layout.fragment_month_chart, container, false);
         categoryPieChart = (PieChart) root.findViewById(R.id.pie_chart_categories);
         categoryPieChart.setUsePercentValues(true);
+        categoryPieChart.setDescription("");
         return root;
     }
 
