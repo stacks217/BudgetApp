@@ -25,13 +25,13 @@ public class CategoryData {
         db = budgetDataDbHelper.getWritableDatabase();
     }
 
-    public String getTotalAmountString() {
+    public int getTotalAmount() {
         Cursor cur = db.rawQuery("SELECT SUM(" + BudgetDataContract.Category.COLUMN_NAME_AMOUNT + ") FROM " + BudgetDataContract.Category.TABLE_NAME, null);
         if(cur.moveToFirst())
         {
-            return String.format("$%.2f", cur.getInt(0)/100.0);
+            return cur.getInt(0);
         }
-        return "$0.00";
+        return 0;
     }
 
     public Category[] getCategories() {

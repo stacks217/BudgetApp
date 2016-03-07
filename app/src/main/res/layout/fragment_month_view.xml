@@ -5,14 +5,23 @@
     android:layout_height="match_parent" >
     <TextView
         android:id="@+id/current_month"
-        style="@style/heading_two"
+        style="@style/heading_one"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/current_month_total"
         style="@style/heading_two"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/current_month_spent"
+        style="@style/heading_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/current_month_remaining"
+        style="@style/heading_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <android.support.v7.widget.RecyclerView

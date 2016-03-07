@@ -10,14 +10,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior" tools:showIn="@layout/app_bar_main"
     tools:context="edu.uci.stacks.easybudget.activity.MainActivity">
 
-    <TextView
-        android:id="@+id/amount_text"
-        style="@style/heading_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
-        android:layout_below="@id/amount_text"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/label_spacing"
         android:layout_marginBottom="@dimen/label_spacing"

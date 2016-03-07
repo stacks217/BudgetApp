@@ -15,6 +15,7 @@ import edu.uci.stacks.easybudget.data.BudgetConfig;
 import edu.uci.stacks.easybudget.data.BudgetMode;
 import edu.uci.stacks.easybudget.data.category.CategoryAdapter;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
+import edu.uci.stacks.easybudget.util.DisplayUtil;
 
 public class EditAdvancedBudgetActivity extends BudgetActivity {
 
@@ -37,7 +38,7 @@ public class EditAdvancedBudgetActivity extends BudgetActivity {
         setupToolbar();
 
         totalMonthlyAmount = (TextView) findViewById(R.id.total_monthly_budget_amount);
-        totalMonthlyAmount.setText(categoryData.getTotalAmountString());
+        totalMonthlyAmount.setText(DisplayUtil.formatToCurrencyFromCents(categoryData.getTotalAmount()));
 
         mRecyclerView = (RecyclerView) findViewById(R.id.category_list);
 
@@ -57,7 +58,7 @@ public class EditAdvancedBudgetActivity extends BudgetActivity {
     public void onResume() {
         super.onResume();
         mAdapter.update();
-        totalMonthlyAmount.setText(categoryData.getTotalAmountString());
+        totalMonthlyAmount.setText(DisplayUtil.formatToCurrencyFromCents(categoryData.getTotalAmount()));
     }
 
     public void finished(View view) {

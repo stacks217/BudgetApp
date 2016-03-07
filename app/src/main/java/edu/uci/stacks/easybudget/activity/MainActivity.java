@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -18,7 +17,6 @@ import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.activity.fragment.adapter.MonthViewPagerAdapter;
 import edu.uci.stacks.easybudget.data.BudgetConfig;
 import edu.uci.stacks.easybudget.data.BudgetMode;
-import edu.uci.stacks.easybudget.data.category.CategoryData;
 import edu.uci.stacks.easybudget.data.transaction.MoneyTransactionData;
 import edu.uci.stacks.easybudget.service.NotificationReminderService;
 
@@ -27,9 +25,6 @@ public class MainActivity extends BudgetActivity
 
     @Inject
     BudgetConfig budgetConfig;
-
-    @Inject
-    CategoryData data;
 
     @Inject
     MoneyTransactionData moneyTransactionData;
@@ -60,14 +55,6 @@ public class MainActivity extends BudgetActivity
 
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
-
-            float amount = budgetConfig.getBudgetAmount();
-            TextView budgetAmountTextView = (TextView) findViewById(R.id.amount_text);
-            if (budgetConfig.getBudgetMode() == BudgetMode.BASIC) {
-                budgetAmountTextView.setText(String.format("$%.2f", amount));
-            } else {
-                budgetAmountTextView.setText(data.getTotalAmountString());
-            }
         }
 
         // Instantiate a ViewPager and a PagerAdapter.

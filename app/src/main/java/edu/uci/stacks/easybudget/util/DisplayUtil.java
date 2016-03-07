@@ -7,7 +7,9 @@ import edu.uci.stacks.easybudget.data.BudgetDataContract;
 
 public class DisplayUtil {
     public static String formatToCurrencyFromCents(int amount) {
-        return String.format("$%.2f", amount/100.0);
+        if (amount >= 0)
+            return String.format("$%.2f", amount/100.0);
+        return String.format("-$%.2f", Math.abs(amount)/100.0);
     }
 
     public static String formatToMonthDay(String date) {

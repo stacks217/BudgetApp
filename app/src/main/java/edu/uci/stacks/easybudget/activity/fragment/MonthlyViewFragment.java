@@ -72,7 +72,15 @@ public class MonthlyViewFragment extends MonthlyFragmentBase {
     public void onResume() {
         super.onResume();
         monthSpentTotal = transactionData.getSumByMonth(date);
-        ((TextView)root.findViewById(R.id.current_month_total)).setText(DisplayUtil.formatToCurrencyFromCents(monthSpentTotal));
+        int totalBudgetAmount = 0;
+        if (budgetConfig.getBudgetMode() == BudgetMode.BASIC) {
+            totalBudgetAmount = (int)(budgetConfig.getBudgetAmount()*100);
+        } else {
+            totalBudgetAmount = categoryData.getTotalAmount();
+        }
+        ((TextView)root.findViewById(R.id.current_month_total)).setText("Budget for: " + DisplayUtil.formatToCurrencyFromCents(totalBudgetAmount));
+        ((TextView)root.findViewById(R.id.current_month_spent)).setText("Spent: " + DisplayUtil.formatToCurrencyFromCents(monthSpentTotal));
+        ((TextView)root.findViewById(R.id.current_month_remaining)).setText("Remaining: " + DisplayUtil.formatToCurrencyFromCents(totalBudgetAmount - monthSpentTotal));
         if (budgetConfig.getBudgetMode() == BudgetMode.ADVANCED) {
             root.findViewById(R.id.tableLayout).setVisibility(View.VISIBLE);
             buildTable((ViewGroup) root.findViewById(R.id.tableLayout));
