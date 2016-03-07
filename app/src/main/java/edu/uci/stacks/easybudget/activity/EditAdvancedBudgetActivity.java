@@ -35,7 +35,7 @@ public class EditAdvancedBudgetActivity extends BudgetActivity {
         BudgetApplication.getComponent().inject(this);
         setContentView(R.layout.activity_edit_budget_advanced);
         setupToolbar();
-        //  - $5000?
+
         totalMonthlyAmount = (TextView) findViewById(R.id.total_monthly_budget_amount);
         totalMonthlyAmount.setText(categoryData.getTotalAmountString());
 

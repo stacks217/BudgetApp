@@ -11,6 +11,7 @@ import edu.uci.stacks.easybudget.BudgetApplication;
 import edu.uci.stacks.easybudget.R;
 import edu.uci.stacks.easybudget.data.category.Category;
 import edu.uci.stacks.easybudget.data.category.CategoryData;
+import edu.uci.stacks.easybudget.util.DisplayUtil;
 
 public class EditCategoryActivity extends BudgetActivity {
     @Inject
@@ -46,7 +47,7 @@ public class EditCategoryActivity extends BudgetActivity {
         if (TextUtils.isEmpty(amountText)) {
             amountText = "0.0";
         }
-        int amount = (int)(Double.parseDouble(amountText)*100);
+        int amount = DisplayUtil.toCentsFromDollars(amountText);
         if (TextUtils.isEmpty(name)) {
             categoryData.removeCategoryById(categoryId);
         } else {

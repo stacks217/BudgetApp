@@ -21,4 +21,18 @@ public class DisplayUtil {
         }
         return result;
     }
+
+    public static int toCentsFromDollars(String dollars) {
+        String[] parts = dollars.split("\\.");
+        int result = Integer.parseInt(parts[0])*100;
+        if (parts.length > 1) {
+            if (parts[1].length() > 1) {
+                result += (parts[1].charAt(0)-'0')*10;
+                result += (parts[1].charAt(1)-'0');
+            } else {
+                result += Integer.parseInt(parts[1])*10;
+            }
+        }
+        return result;
+    }
 }

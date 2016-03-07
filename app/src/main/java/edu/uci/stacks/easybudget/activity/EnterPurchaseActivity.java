@@ -38,6 +38,7 @@ import edu.uci.stacks.easybudget.data.transaction.AutoCompleteTransactionAdapate
 import edu.uci.stacks.easybudget.data.transaction.MoneyOutTransaction;
 import edu.uci.stacks.easybudget.data.transaction.MoneyTransaction;
 import edu.uci.stacks.easybudget.data.transaction.MoneyTransactionData;
+import edu.uci.stacks.easybudget.util.DisplayUtil;
 
 public class EnterPurchaseActivity extends BudgetActivity
         implements DatePickerDialog.OnDateSetListener  {
@@ -154,7 +155,7 @@ public class EnterPurchaseActivity extends BudgetActivity
         if (TextUtils.isEmpty(amountText)) {
             amountText = "0.0";
         }
-        int amount = (int)(Double.parseDouble(amountText)*100);
+        int amount =  DisplayUtil.toCentsFromDollars(amountText);
         int categoryId = ((Category)categorySpinner.getSelectedItem()).getId();
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
